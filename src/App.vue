@@ -1,0 +1,33 @@
+<template>
+  <div>
+    <router-view></router-view>
+    <FooterGuide v-show="$route.meta.showFooter"/>
+    <!-- <FooterGuide/> -->
+  </div>
+</template>
+
+<script>
+import FooterGuide from '../src/components/FooterGuide/FooterGuide'
+import {mapActions} from 'vuex'
+export default {
+  mounted () {
+    this.getAddress()
+    this.getUserInfo()
+  },
+  methods: {
+    ...mapActions(['getAddress', 'getUserInfo'])
+  },
+  components: {
+    FooterGuide
+  }
+}
+</script>
+
+<style>
+  #app{
+    width: 100%;
+    height: 100%;
+    background: #f5f5f5;
+    position: relative;
+  }
+</style>
